@@ -40,7 +40,9 @@ const App = () => {
         <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-t from-black/10"></div>
       </div>
 
-      <div className="w-full flex mt-auto">
+      <div className="w-full mt-auto pt-2">
+        <span className="px-7 text-xl font-semibold">메시지북</span>
+
         <div className="flex gap-4 py-6 px-6 overflow-x-scroll snap-x scrollbar-hide">
           {supports.map((support: support) => (
             <img
