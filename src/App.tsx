@@ -14,8 +14,7 @@ const App = () => {
   const [selected, setSelected] = useState<support>(supports[0]);
 
   const imageStyle = (id: number): string => {
-    const base =
-      "max-w-52 aspect-[148/210] object-cover snap-center border border-solid border-gray-200 rounded-lg drop-shadow-xl hover:cursor-pointer";
+    const base = "max-w-52 aspect-[148/210] object-cover snap-center rounded-lg drop-shadow-xl hover:cursor-pointer";
     if (selected.id === id) {
       return base + " transition -translate-y-3 scale-105";
     } else {
@@ -25,12 +24,12 @@ const App = () => {
 
   return (
     <div className="w-screen h-screen flex flex-col">
-      <div className="container grid grid-cols-2 h-full p-4 mx-auto">
-        <div className="my-auto flex flex-col gap-2">
-          <h1 className="text-5xl font-bold">
-            <span className="text-itzy">{selected.title[0]}</span>
-            {selected.title.substring(1)}
-          </h1>
+      <div
+        className="h-full p-6 mb-4 flex bg-cover drop-shadow-xl relative"
+        style={{ backgroundImage: `url('./images/photos/${selected.photo}'` }}
+      >
+        <div className="mt-auto flex flex-col gap-2 p-4 rounded-2xl text-white z-10">
+          <h1 className="text-5xl font-bold">{selected.title}</h1>
           <p>{selected.description}</p>
 
           <a className="font-semibold mt-2 cursor-pointer hover:text-itzy transition duration-300 ease-in-out">
@@ -38,9 +37,7 @@ const App = () => {
           </a>
         </div>
 
-        <div className="m-auto">
-          <img src={`./images/photos/${selected.photo}`} className="max-w-96 rounded-3xl shadow-2xl shadow-gray-400" />
-        </div>
+        <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-t from-black/10"></div>
       </div>
 
       <div className="w-full flex mt-auto">
