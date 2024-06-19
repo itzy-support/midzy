@@ -1,65 +1,62 @@
-import Container from "@/components/Container";
-import GridContainer from "@/components/GridContainer";
 import supportData from "@/data/supports.json";
-// import { useState } from "react";
+import { useState } from "react";
 
 type support = {
   id: number;
+  title: string;
+  description: string;
   cover: string;
+  photo: string;
 };
 
 const App = () => {
-  // const [selected, setSelected] = useState();
   const supports: support[] = supportData;
+  const [selected, setSelected] = useState<support>(supports[0]);
+
+  const imageStyle = (id: number): string => {
+    const base =
+      "max-w-52 aspect-[148/210] object-cover snap-center border border-solid border-gray-200 rounded-lg drop-shadow-xl hover:cursor-pointer";
+    if (selected.id === id) {
+      return base + " transition -translate-y-3 scale-105";
+    } else {
+      return base + " transition hover:-translate-y-2";
+    }
+  };
 
   return (
-    <Container>
-      <GridContainer>
-        <div className="col-span-6 flex justify-center items-center h-screen">
-          <h1 className="text-5xl">ABCDEFG</h1>
+    <div className="w-screen h-screen flex flex-col">
+      <div className="container grid grid-cols-2 h-full p-4 mx-auto">
+        <div className="my-auto flex flex-col gap-2">
+          <h1 className="text-5xl font-bold">
+            <span className="text-itzy">{selected.title[0]}</span>
+            {selected.title.substring(1)}
+          </h1>
+          <p>{selected.description}</p>
+
+          <a className="font-semibold mt-2 cursor-pointer hover:text-itzy transition duration-300 ease-in-out">
+            보러가기✨
+          </a>
         </div>
 
-        <div className="col-span-6 flex justify-center items-center">Test</div>
-      </GridContainer>
-
-      <div className="col-span-12 relative flex p-4">
-        <div className="absolute left-0 inset-y-0 w-12 flex justify-center items-center bg-gradient-to-r from-neutral-400">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            className="size-6 text-white"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-          </svg>
+        <div className="m-auto">
+          <img src={`./images/photos/${selected.photo}`} className="max-w-96 rounded-3xl shadow-2xl shadow-gray-400" />
         </div>
+      </div>
 
-        <div className="flex gap-8 overflow-x-scroll snap-x scrollbar-hide">
-          {supports.map(({ cover }: support) => (
+      <div className="w-full flex mt-auto">
+        <div className="flex gap-4 py-6 px-6 overflow-x-scroll snap-x scrollbar-hide">
+          {supports.map((support: support) => (
             <img
-              src={`./images/covers/${cover}`}
+              key={support.id}
+              src={`./images/covers/${support.cover}`}
               alt=""
-              className="max-w-56 aspect-[148/210] object-cover snap-start rounded-lg shadow-xl shadow-slate-300"
+              className={imageStyle(support.id)}
+              onClick={() => setSelected(support)}
             />
           ))}
         </div>
-
-        <div className="absolute right-0 inset-y-0 w-12 flex justify-center items-center bg-gradient-to-l from-neutral-400">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            className="size-6 text-white"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-          </svg>
-        </div>
       </div>
-    </Container>
+    </div>
   );
 };
 

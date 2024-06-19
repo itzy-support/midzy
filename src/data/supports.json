@@ -1,42 +1,72 @@
 [
   {
     "id": 1,
-    "cover": "2023-yeji.webp"
+    "title": "예지에게, 믿지가",
+    "description": "2023 예지 생일 메시지북",
+    "cover": "2023-yeji-cover.webp",
+    "photo": "2023-yeji-photo.jpg"
   },
   {
     "id": 2,
-    "cover": "2023-chaeryeong.webp"
+    "title": "밤하늘의 별에게",
+    "description": "2023 채령 생일 메시지북",
+    "cover": "2023-chaeryeong-cover.webp",
+    "photo": "2023-chaeryeong-photo.jpg"
   },
   {
     "id": 3,
-    "cover": "2023-lia.webp"
+    "title": "July Julia LIA",
+    "description": "2023 리아 생일 메시지북",
+    "cover": "2023-lia-cover.webp",
+    "photo": "2023-lia-photo.jpg"
   },
   {
     "id": 4,
-    "cover": "2023-lia-letterbook.webp"
+    "title": "리아에게",
+    "description": "리아 레터북 1",
+    "cover": "lia-letterbook-1st-cover.webp",
+    "photo": "lia-letterbook-1st-photo.jpg"
   },
   {
     "id": 5,
-    "cover": "2023-yuna.webp"
+    "title": "아름답고 찬란하神 유나",
+    "description": "2023 유나 생일 메시지북",
+    "cover": "2023-yuna-cover.webp",
+    "photo": "2023-yuna-photo.jpg"
   },
   {
     "id": 6,
-    "cover": "2024-born-to-be-yeji.webp"
+    "title": "BORN TO BE",
+    "description": "BORN TO BE 콘서트 후기북",
+    "cover": "born-to-be-reviewbook-cover.webp",
+    "photo": "born-to-be-reviewbook-photo.jpg"
   },
   {
     "id": 7,
-    "cover": "2024-lia-letterbook.webp"
+    "title": "보고싶은 리아에게",
+    "description": "리아 레터북 2",
+    "cover": "lia-letterbook-2nd-cover.webp",
+    "photo": "lia-letterbook-2nd-photo.jpg"
   },
   {
     "id": 8,
-    "cover": "2024-ryujin.webp"
+    "title": "i love ryu",
+    "description": "2024 류진 생일 메시지북",
+    "cover": "2024-ryujin-cover.webp",
+    "photo": "2024-ryujin-photo.jpg"
   },
   {
     "id": 9,
-    "cover": "2024-yeji.webp"
+    "title": "오늘도 황예지 하세요",
+    "description": "2024 예지 생일 메시지북",
+    "cover": "2024-yeji-cover.webp",
+    "photo": "2024-yeji-photo.jpg"
   },
   {
     "id": 10,
-    "cover": "2024-chaeryeong.webp"
+    "title": "채령이와 크림단의 Something",
+    "description": "2024 채령 생일 메시지북",
+    "cover": "2024-chaeryeong-cover.webp",
+    "photo": "2024-chaeryeong-photo.jpg"
   }
 ]
