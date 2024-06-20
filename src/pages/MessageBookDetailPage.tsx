@@ -1,10 +1,15 @@
 import { MessageBook } from "@/types";
 import { getImageURL, getThumbnailURL } from "@/utils";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const MessageBookDetailPage: React.FC = () => {
   const messageBook: MessageBook = useLoaderData() as MessageBook;
-  const { title, description, contents, cover, photos } = messageBook;
+  const { id, title, description, contents, cover, photos } = messageBook;
+
+  const navigate = useNavigate();
+  const goViewer = (id: number): void => {
+    navigate(`/messagebook/viewer/${id}`);
+  };
 
   return (
     <main className="container mx-auto p-4 flex flex-col gap-4">
@@ -29,7 +34,10 @@ const MessageBookDetailPage: React.FC = () => {
             ))}
           </div>
 
-          <button className="w-fit text-itzy-500 hover:text-itzy-200 transition duration-300 ease-in-out">
+          <button
+            className="w-fit text-itzy-500 hover:text-itzy-200 transition duration-300 ease-in-out"
+            onClick={() => goViewer(id)}
+          >
             읽어보기 📖
           </button>
         </div>
