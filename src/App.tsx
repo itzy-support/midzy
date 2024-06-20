@@ -26,7 +26,7 @@ const App = () => {
     <div className="w-screen h-screen flex flex-col">
       <div
         className="h-full p-6 mb-4 flex bg-cover drop-shadow-xl relative"
-        style={{ backgroundImage: `url('./images/photos/${selected.photo}'` }}
+        style={{ backgroundImage: `url('https://lh3.googleusercontent.com/d/${selected.photo}?authuser=0'` }}
       >
         <div className="mt-auto flex flex-col gap-2 p-4 rounded-2xl text-white z-10">
           <h1 className="text-5xl font-bold">{selected.title}</h1>
@@ -47,7 +47,7 @@ const App = () => {
           {supports.map((support: support) => (
             <img
               key={support.id}
-              src={`./images/covers/${support.cover}`}
+              src={`https://drive.google.com/thumbnail?id=${support.cover}&sz=w256`}
               alt=""
               className={imageStyle(support.id)}
               onClick={() => setSelected(support)}
