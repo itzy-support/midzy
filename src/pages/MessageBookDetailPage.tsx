@@ -24,15 +24,19 @@ const MessageBookDetailPage: React.FC = () => {
         </div>
 
         {/* 정보 */}
-        <div className="col-span-3 sm:col-span-2 flex flex-col gap-1">
-          <h2 className="text-4xl font-semibold">{title}</h2>
-          <p>{description}</p>
-
-          <div className="my-4">
-            {contents.map(({ entry }, index) => (
-              <p key={entry} className="text-sm opacity-55">{`${index + 1}. ${entry}`}</p>
-            ))}
+        <div className="col-span-3 sm:col-span-2 flex flex-col gap-4">
+          <div>
+            <h2 className="text-4xl font-semibold">{title}</h2>
+            <p className="mt-1">{description}</p>
           </div>
+
+          {contents && (
+            <div>
+              {contents.map(({ entry }, index) => (
+                <p key={entry} className="text-sm opacity-55">{`${index + 1}. ${entry}`}</p>
+              ))}
+            </div>
+          )}
 
           <button
             className="w-fit text-itzy-500 hover:text-itzy-200 transition duration-300 ease-in-out"
