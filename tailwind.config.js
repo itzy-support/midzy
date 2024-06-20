@@ -6,7 +6,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        itzy: "#f443ab",
+        itzy: {
+          100: "#FED9E0",
+          200: "#FDB4C9",
+          300: "#FB8EB8",
+          400: "#F871B3",
+          500: "#F443AB",
+          600: "#D1309F",
+          700: "#AF2191",
+          800: "#8D157F",
+          900: "#750C73",
+        },
       },
     },
     fontFamily: {

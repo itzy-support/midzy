@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 const MessageBookPage: React.FC = () => {
-  const supports: MessageBook[] = useLoaderData() as MessageBook[];
-  const [selected, setSelected] = useState<MessageBook>(supports[0]);
+  const messageBooks: MessageBook[] = useLoaderData() as MessageBook[];
+  const [selected, setSelected] = useState<MessageBook>(messageBooks[0]);
 
   const imageStyle = (id: number): string => {
     const base = "max-w-52 aspect-[148/210] object-cover snap-center rounded-lg drop-shadow-xl hover:cursor-pointer";
@@ -27,17 +27,17 @@ const MessageBookPage: React.FC = () => {
     <div className="w-screen h-screen flex flex-col">
       <div
         className="h-full p-6 mb-4 flex bg-cover drop-shadow-lg relative"
-        style={{ backgroundImage: `url('${getImageURL(selected.photo)}')` }}
+        style={{ backgroundImage: `url('${getImageURL(selected.photos[0])}')` }}
       >
         <div className="mt-auto flex flex-col gap-2 p-4 rounded-2xl text-white z-10">
           <h1 className="text-5xl font-bold">{selected.title}</h1>
           <p>{selected.description}</p>
 
           <a
-            className="font-semibold mt-2 cursor-pointer hover:text-itzy transition duration-300 ease-in-out"
+            className="font-semibold mt-2 cursor-pointer hover:text-itzy-500 transition duration-300 ease-in-out"
             onClick={() => goDetail(selected)}
           >
-            보러가기✨
+            상세정보✨
           </a>
         </div>
 
@@ -48,7 +48,7 @@ const MessageBookPage: React.FC = () => {
         <span className="px-7 text-xl font-semibold">메시지북</span>
 
         <div className="flex gap-4 py-6 px-6 overflow-x-scroll snap-x scrollbar-hide">
-          {supports.map((support: MessageBook) => (
+          {messageBooks.map((support: MessageBook) => (
             <img
               key={support.id}
               src={getThumbnailURL(support.cover)}

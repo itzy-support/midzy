@@ -8,6 +8,6 @@ export interface MessageBook {
   title: string;
   description: string;
   cover: string;
-  photo: string;
+  photos: string[];
   contents: Contents[];
 }

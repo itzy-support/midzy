@@ -1,10 +1,10 @@
 import { MessageBook } from "@/types";
-import { getThumbnailURL } from "@/utils";
-import { useLocation } from "react-router-dom";
+import { getImageURL, getThumbnailURL } from "@/utils";
+import { useLoaderData } from "react-router-dom";
 
 const MessageBookDetailPage: React.FC = () => {
-  const location = useLocation();
-  const { title, description, cover } = location.state as MessageBook;
+  const messageBook: MessageBook = useLoaderData() as MessageBook;
+  const { title, description, contents, cover, photos } = messageBook;
 
   return (
     <main className="container mx-auto p-4 flex flex-col gap-4">
@@ -22,10 +22,29 @@ const MessageBookDetailPage: React.FC = () => {
         <div className="col-span-3 sm:col-span-2 flex flex-col gap-1">
           <h2 className="text-4xl font-semibold">{title}</h2>
           <p>{description}</p>
+
+          <div className="my-4">
+            {contents.map(({ entry }, index) => (
+              <p key={entry} className="text-sm opacity-55">{`${index + 1}. ${entry}`}</p>
+            ))}
+          </div>
+
+          <button className="w-fit text-itzy-500 hover:text-itzy-200 transition duration-300 ease-in-out">
+            읽어보기 📖
+          </button>
         </div>
       </section>
 
-      <section></section>
+      <section className="bg-white p-4 rounded-xl shadow-lg">
+        <span className="text-xl font-semibold">📷실물사진</span>
+
+        {/* 사진 */}
+        <div className="grid grid-cols-3 gap-1.5 mt-2">
+          {photos.map((photo) => (
+            <img src={getImageURL(photo)} alt={title} className="rounded-md aspect-square object-cover" />
+          ))}
+        </div>
+      </section>
     </main>
   );
 };

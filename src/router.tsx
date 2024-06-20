@@ -16,6 +16,7 @@ const routes: RouteObject[] = [
       {
         path: ":id",
         element: <MessageBookDetailPage />,
+        loader: ({ params: { id } }) => messageBookData.find((el) => el.id === Number(id)) as MessageBook,
       },
     ],
   },
