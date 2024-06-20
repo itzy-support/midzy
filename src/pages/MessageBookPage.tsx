@@ -19,7 +19,7 @@ const MessageBookPage: React.FC = () => {
   const navigate = useNavigate();
   const goDetail = (support: MessageBook): void => {
     navigate(`/messagebook/${support.id}`, {
-      state: { ...support },
+      state: support,
     });
   };
 
