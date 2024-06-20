@@ -1,4 +1,5 @@
 import { Support } from "@/types";
+import { getImageURL, getThumbnailURL } from "@/utils";
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
@@ -26,7 +27,7 @@ const MessageBook: React.FC = () => {
     <div className="w-screen h-screen flex flex-col">
       <div
         className="h-full p-6 mb-4 flex bg-cover drop-shadow-lg relative"
-        style={{ backgroundImage: `url('https://lh3.googleusercontent.com/d/${selected.photo}?authuser=0'` }}
+        style={{ backgroundImage: `url('${getImageURL(selected.photo)}')` }}
       >
         <div className="mt-auto flex flex-col gap-2 p-4 rounded-2xl text-white z-10">
           <h1 className="text-5xl font-bold">{selected.title}</h1>
@@ -50,7 +51,7 @@ const MessageBook: React.FC = () => {
           {supports.map((support: Support) => (
             <img
               key={support.id}
-              src={`https://drive.google.com/thumbnail?id=${support.cover}&sz=w256`}
+              src={getThumbnailURL(support.cover)}
               alt={support.title}
               className={imageStyle(support.id)}
               onClick={() => setSelected(support)}
