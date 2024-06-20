@@ -51,7 +51,7 @@ const MessageBook: React.FC = () => {
             <img
               key={support.id}
               src={`https://drive.google.com/thumbnail?id=${support.cover}&sz=w256`}
-              alt=""
+              alt={support.title}
               className={imageStyle(support.id)}
               onClick={() => setSelected(support)}
             />
