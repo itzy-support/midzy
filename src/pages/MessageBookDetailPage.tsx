@@ -41,7 +41,7 @@ const MessageBookDetailPage: React.FC = () => {
         {/* 사진 */}
         <div className="grid grid-cols-3 gap-1.5 mt-2">
           {photos.map((photo) => (
-            <img src={getImageURL(photo)} alt={title} className="rounded-md aspect-square object-cover" />
+            <img key={photo} src={getImageURL(photo)} alt={title} className="rounded-md aspect-square object-cover" />
           ))}
         </div>
       </section>
