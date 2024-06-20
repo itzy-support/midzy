@@ -1,14 +1,17 @@
 import { RouteObject, createBrowserRouter } from "react-router-dom";
-import MessageBookPage from "@/pages/MessageBookPage";
-import messageBookData from "@/data/message-books.json";
-import MessageBookDetailPage from "@/pages/MessageBookDetailPage";
 import { MessageBook } from "@/types";
+import messageBooks from "@/data/message-books.json";
+import MessageBookPage from "@/pages/MessageBookPage";
+import MessageBookDetailPage from "@/pages/MessageBookDetailPage";
+import MessageBookViewrPage from "@/pages/MessageBookViewrPage";
+
+const messageBookData: MessageBook[] = messageBooks as MessageBook[];
 
 const routes: RouteObject[] = [
   {
     path: "/",
     element: <MessageBookPage />,
-    loader: () => messageBookData as MessageBook[],
+    loader: (): MessageBook[] => messageBookData,
   },
   {
     path: "/messagebook",
@@ -16,11 +19,18 @@ const routes: RouteObject[] = [
       {
         path: ":id",
         element: <MessageBookDetailPage />,
-        loader: ({ params: { id } }) => messageBookData.find((el) => el.id === Number(id)) as MessageBook,
+        loader: ({ params: { id } }) => getMessageBookById(Number(id)),
+      },
+      {
+        path: "viewer/:id",
+        element: <MessageBookViewrPage />,
+        loader: ({ params: { id } }) => getMessageBookById(Number(id)),
       },
     ],
   },
 ];
+
+const getMessageBookById = (id: number): MessageBook => messageBookData.find((el) => el.id === id) as MessageBook;
 
 const router = createBrowserRouter(routes);
 
