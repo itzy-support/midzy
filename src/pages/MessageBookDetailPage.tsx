@@ -13,7 +13,7 @@ const MessageBookDetailPage: React.FC = () => {
 
   return (
     <main className="container mx-auto p-4 flex flex-col gap-4">
-      <section className="grid grid-cols-3 gap-8 bg-white p-4 rounded-xl shadow-lg">
+      <section className="grid grid-cols-3 gap-8 bg-white p-6 rounded-xl shadow-lg">
         {/* 이미지 */}
         <div className="col-span-3 sm:col-span-1 flex justify-center">
           <img
@@ -47,13 +47,18 @@ const MessageBookDetailPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="bg-white p-4 rounded-xl shadow-lg">
+      <section className="bg-white p-6 rounded-xl shadow-lg">
         <span className="text-xl font-semibold">📷실물사진</span>
 
         {/* 사진 */}
-        <div className="grid grid-cols-3 gap-1.5 mt-2">
+        <div className="grid grid-cols-12 gap-1.5 mt-2">
           {photos.map((photo) => (
-            <img key={photo} src={getImageURL(photo)} alt={title} className="rounded-md aspect-square object-cover" />
+            <img
+              key={photo}
+              src={getImageURL(photo)}
+              alt={title}
+              className="rounded-md aspect-square object-cover col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-2"
+            />
           ))}
         </div>
       </section>

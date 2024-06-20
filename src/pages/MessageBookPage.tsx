@@ -47,7 +47,7 @@ const MessageBookPage: React.FC = () => {
       <div className="w-full mt-auto pt-2">
         <span className="px-7 text-xl font-semibold">메시지북</span>
 
-        <div className="flex gap-4 py-6 px-6 overflow-x-scroll snap-x scrollbar-hide">
+        <div className="flex gap-4 p-6 overflow-x-scroll snap-x scrollbar-hide">
           {messageBooks.map((messageBook: MessageBook) => (
             <img
               key={messageBook.id}
