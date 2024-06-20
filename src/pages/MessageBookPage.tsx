@@ -24,8 +24,9 @@ const MessageBookPage: React.FC = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col">
-      <div
+    <main className="w-screen h-screen flex flex-col">
+      {/* 히어로 */}
+      <section
         className="h-full p-6 mb-4 flex bg-cover drop-shadow-lg relative"
         style={{ backgroundImage: `url('${getImageURL(selected.photos[0])}')` }}
       >
@@ -42,8 +43,9 @@ const MessageBookPage: React.FC = () => {
         </div>
 
         <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-t from-black/10"></div>
-      </div>
+      </section>
 
+      {/* 리스트 */}
       <div className="w-full mt-auto pt-2">
         <span className="px-7 text-xl font-semibold">메시지북</span>
 
@@ -59,7 +61,7 @@ const MessageBookPage: React.FC = () => {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
