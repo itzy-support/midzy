@@ -17,8 +17,8 @@ const MessageBookPage: React.FC = () => {
   };
 
   const navigate = useNavigate();
-  const goDetail = (support: MessageBook): void => {
-    navigate(`/messagebook/${support.id}`);
+  const goDetail = (messageBook: MessageBook): void => {
+    navigate(`/messagebook/${messageBook.id}`);
   };
 
   return (
@@ -48,13 +48,13 @@ const MessageBookPage: React.FC = () => {
         <span className="px-7 text-xl font-semibold">메시지북</span>
 
         <div className="flex gap-4 py-6 px-6 overflow-x-scroll snap-x scrollbar-hide">
-          {messageBooks.map((support: MessageBook) => (
+          {messageBooks.map((messageBook: MessageBook) => (
             <img
-              key={support.id}
-              src={getThumbnailURL(support.cover)}
-              alt={support.title}
-              className={imageStyle(support.id)}
-              onClick={() => setSelected(support)}
+              key={messageBook.id}
+              src={getThumbnailURL(messageBook.cover)}
+              alt={messageBook.title}
+              className={imageStyle(messageBook.id)}
+              onClick={() => setSelected(messageBook)}
             />
           ))}
         </div>
