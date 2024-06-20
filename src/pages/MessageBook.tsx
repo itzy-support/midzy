@@ -1,17 +1,10 @@
+import { Support } from "@/types";
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
-
-type support = {
-  id: number;
-  title: string;
-  description: string;
-  cover: string;
-  photo: string;
-};
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const MessageBook: React.FC = () => {
-  const supports: support[] = useLoaderData() as support[];
-  const [selected, setSelected] = useState<support>(supports[0]);
+  const supports: Support[] = useLoaderData() as Support[];
+  const [selected, setSelected] = useState<Support>(supports[0]);
 
   const imageStyle = (id: number): string => {
     const base = "max-w-52 aspect-[148/210] object-cover snap-center rounded-lg drop-shadow-xl hover:cursor-pointer";
@@ -22,17 +15,27 @@ const MessageBook: React.FC = () => {
     }
   };
 
+  const navigate = useNavigate();
+  const goDetail = (support: Support): void => {
+    navigate(`/messagebook/${support.id}`, {
+      state: { ...support },
+    });
+  };
+
   return (
     <div className="w-screen h-screen flex flex-col">
       <div
-        className="h-full p-6 mb-4 flex bg-cover drop-shadow-xl relative"
+        className="h-full p-6 mb-4 flex bg-cover drop-shadow-lg relative"
         style={{ backgroundImage: `url('https://lh3.googleusercontent.com/d/${selected.photo}?authuser=0'` }}
       >
         <div className="mt-auto flex flex-col gap-2 p-4 rounded-2xl text-white z-10">
           <h1 className="text-5xl font-bold">{selected.title}</h1>
           <p>{selected.description}</p>
 
-          <a className="font-semibold mt-2 cursor-pointer hover:text-itzy transition duration-300 ease-in-out">
+          <a
+            className="font-semibold mt-2 cursor-pointer hover:text-itzy transition duration-300 ease-in-out"
+            onClick={() => goDetail(selected)}
+          >
             보러가기✨
           </a>
         </div>
@@ -44,7 +47,7 @@ const MessageBook: React.FC = () => {
         <span className="px-7 text-xl font-semibold">메시지북</span>
 
         <div className="flex gap-4 py-6 px-6 overflow-x-scroll snap-x scrollbar-hide">
-          {supports.map((support: support) => (
+          {supports.map((support: Support) => (
             <img
               key={support.id}
               src={`https://drive.google.com/thumbnail?id=${support.cover}&sz=w256`}
