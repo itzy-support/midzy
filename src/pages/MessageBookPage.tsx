@@ -1,11 +1,11 @@
-import { Support } from "@/types";
+import { MessageBook } from "@/types";
 import { getImageURL, getThumbnailURL } from "@/utils";
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
-const MessageBook: React.FC = () => {
-  const supports: Support[] = useLoaderData() as Support[];
-  const [selected, setSelected] = useState<Support>(supports[0]);
+const MessageBookPage: React.FC = () => {
+  const supports: MessageBook[] = useLoaderData() as MessageBook[];
+  const [selected, setSelected] = useState<MessageBook>(supports[0]);
 
   const imageStyle = (id: number): string => {
     const base = "max-w-52 aspect-[148/210] object-cover snap-center rounded-lg drop-shadow-xl hover:cursor-pointer";
@@ -17,7 +17,7 @@ const MessageBook: React.FC = () => {
   };
 
   const navigate = useNavigate();
-  const goDetail = (support: Support): void => {
+  const goDetail = (support: MessageBook): void => {
     navigate(`/messagebook/${support.id}`, {
       state: { ...support },
     });
@@ -48,7 +48,7 @@ const MessageBook: React.FC = () => {
         <span className="px-7 text-xl font-semibold">메시지북</span>
 
         <div className="flex gap-4 py-6 px-6 overflow-x-scroll snap-x scrollbar-hide">
-          {supports.map((support: Support) => (
+          {supports.map((support: MessageBook) => (
             <img
               key={support.id}
               src={getThumbnailURL(support.cover)}
@@ -63,4 +63,4 @@ const MessageBook: React.FC = () => {
   );
 };
 
-export default MessageBook;
+export default MessageBookPage;
