@@ -42,7 +42,8 @@
         "entry": "도전! 예지요리",
         "page": 167
       }
-    ]
+    ],
+    "pdf": "1CxS018u2PJoY-uZcptItN63iNDsQJlbD"
   },
   {
     "id": 2,
@@ -83,7 +84,8 @@
         "entry": "100문 100답",
         "page": 121
       }
-    ]
+    ],
+    "pdf": "1D_kvd9LuMeM1xTXivILjLd4jeq9mM9z5"
   },
   {
     "id": 3,
@@ -138,7 +140,8 @@
         "entry": "22-23 리아 로드맵",
         "page": 177
       }
-    ]
+    ],
+    "pdf": "1IHoDgXQjkL2J1T0RKDNB5d_creweUapL"
   },
   {
     "id": 4,
@@ -186,14 +189,16 @@
         "entry": "100문100답",
         "page": 120
       }
-    ]
+    ],
+    "pdf": "1qdiF0b4vV2jsNTmDyTAbhkSYH3XZxBgu"
   },
   {
     "id": 6,
     "title": "BORN TO BE",
     "description": "BORN TO BE 콘서트 후기북",
     "cover": "1b768XhS4uZyz0zp98sdZclEX6BpTN-bq",
-    "photos": ["1tB5TsSNGokFuMAkmzkB8Q4SXcbWSKbxq"]
+    "photos": ["1tB5TsSNGokFuMAkmzkB8Q4SXcbWSKbxq"],
+    "pdf": "1-rUpkqWZp2pt8bCD0lHm9lmQzFOgsyUq"
   },
   {
     "id": 7,
@@ -207,20 +212,23 @@
     "title": "i love ryu",
     "description": "2024 류진 생일 메시지북",
     "cover": "1z38Y9PkyvxgeIw73vRlHRlpWDYAPqyUW",
-    "photos": ["11yPgirrVu342lliMGqNLUEMIs1Urq_YQ"]
+    "photos": ["11yPgirrVu342lliMGqNLUEMIs1Urq_YQ"],
+    "pdf": "12lUl9suXXx2VTGlyhrctCfI7uAEpf9BJ"
   },
   {
     "id": 9,
     "title": "오늘도 황예지 하세요",
     "description": "2024 예지 생일 메시지북",
     "cover": "1ERW2WgyDaO3ByGdW9HhhcbeB49X4sRcV",
-    "photos": ["1wwTwA4ZnhJfgzimkeW5-i5iV0FLndfAy"]
+    "photos": ["1wwTwA4ZnhJfgzimkeW5-i5iV0FLndfAy"],
+    "pdf": "1_fuX0OsToTLXC1NAQgUpVB25sLPLgFHZ"
   },
   {
     "id": 10,
     "title": "채령이와 크림단의 Something",
     "description": "2024 채령 생일 메시지북",
     "cover": "1TKWbfpCsl7VQtVXlFEEOYl9J_YsjG_HJ",
-    "photos": ["1xcUCGSP7iCSLN1Zs1qBmiV1iAn41285d"]
+    "photos": ["1xcUCGSP7iCSLN1Zs1qBmiV1iAn41285d"],
+    "pdf": "1GjZabgzRe05LJ_8C8ufbHYBKmX8MCEtC"
   }
 ]

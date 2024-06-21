@@ -10,4 +10,5 @@ export interface MessageBook {
   cover: string;
   photos: string[];
   contents: Contents[];
+  pdf: string;
 }
