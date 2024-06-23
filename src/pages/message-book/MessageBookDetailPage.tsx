@@ -8,7 +8,7 @@ const MessageBookDetailPage: React.FC = () => {
 
   const navigate = useNavigate();
   const goViewer = (id: number): void => {
-    navigate(`/messagebook/viewer/${id}`);
+    navigate(`/message-book/viewer/${id}`);
   };
 
   return (

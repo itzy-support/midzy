@@ -1,18 +1,22 @@
 import { MessageBook } from "@/types";
-import { getDriveURL } from "@/utils";
+import { getMessageBookURL } from "@/utils";
 import { useLoaderData } from "react-router-dom";
 
 const MessageBookViewr: React.FC = () => {
   const messageBook: MessageBook = useLoaderData() as MessageBook;
-  const { pdf } = messageBook;
+  const { pages, path } = messageBook;
 
-  const openDriveLink = (): void => {
-    open(getDriveURL(pdf));
-  };
+  // const openDriveLink = (): void => {
+  //   open(getDriveURL(pdf));
+  // };
+
+  /* <button onClick={openDriveLink}>다운</button> */
 
   return (
-    <main className="container mx-auto p-4 flex flex-col gap-4">
-      <button onClick={openDriveLink}>다운</button>
+    <main className="container mx-auto p-4 grid grid-cols-2 gap-1.5">
+      {[...Array(pages)].map((_, index) => (
+        <img src={getMessageBookURL(path, index + 1)} className="col-span-2 xl:col-span-1" />
+      ))}
     </main>
   );
 };

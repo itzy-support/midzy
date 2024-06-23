@@ -7,4 +7,4 @@ export const getCoverURL = (path: string): string => `${IMAGE_BASE}/${path}/${pa
 export const getPhotoURL = (path: string, photo: string): string => `${IMAGE_BASE}/${path}/photos/${photo}`;
 
 export const getMessageBookURL = (path: string, page: number): string =>
-  `${IMAGE_BASE}/${path}/message-book/${path}_${String(page).padStart(3, "0")}`;
+  `${IMAGE_BASE}/${path}/message-book/${path}_${String(page).padStart(3, "0")}.webp`;

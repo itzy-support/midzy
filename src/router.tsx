@@ -14,7 +14,7 @@ const routes: RouteObject[] = [
     loader: (): MessageBook[] => messageBookData,
   },
   {
-    path: "/messagebook",
+    path: "/message-book",
     children: [
       {
         path: ":id",

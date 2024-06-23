@@ -18,7 +18,7 @@ const MessageBookPage: React.FC = () => {
 
   const navigate = useNavigate();
   const goDetail = (messageBook: MessageBook): void => {
-    navigate(`/messagebook/${messageBook.id}`);
+    navigate(`/message-book/${messageBook.id}`);
   };
 
   return (
