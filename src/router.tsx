@@ -1,9 +1,9 @@
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 import { MessageBook } from "@/types";
 import messageBooks from "@/data/message-books.json";
-import MessageBookPage from "@/pages/MessageBookPage";
-import MessageBookDetailPage from "@/pages/MessageBookDetailPage";
-import MessageBookViewrPage from "@/pages/MessageBookViewrPage";
+import MessageBookPage from "@/pages/message-book/MessageBookPage";
+import MessageBookDetailPage from "@/pages/message-book/MessageBookDetailPage";
+import MessageBookViewrPage from "@/pages/message-book/MessageBookViewerPage";
 
 const messageBookData: MessageBook[] = messageBooks as MessageBook[];
 
