@@ -7,8 +7,9 @@ export interface MessageBook {
   id: number;
   title: string;
   description: string;
-  cover: string;
+  path: string;
   photos: string[];
-  contents: Contents[];
+  pages: number;
   pdf: string;
+  contents: Contents[];
 }

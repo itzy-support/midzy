@@ -1,10 +1,10 @@
 import { MessageBook } from "@/types";
-import { getImageURL, getThumbnailURL } from "@/utils";
+import { getCoverURL, getPhotoURL } from "@/utils";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 const MessageBookDetailPage: React.FC = () => {
   const messageBook: MessageBook = useLoaderData() as MessageBook;
-  const { id, title, description, contents, cover, photos } = messageBook;
+  const { id, title, description, contents, path, photos } = messageBook;
 
   const navigate = useNavigate();
   const goViewer = (id: number): void => {
@@ -17,7 +17,7 @@ const MessageBookDetailPage: React.FC = () => {
         {/* 이미지 */}
         <div className="col-span-3 sm:col-span-1 flex justify-center">
           <img
-            src={getThumbnailURL(cover)}
+            src={getCoverURL(path)}
             alt={title}
             className="aspect-[148/210] object-cover w-full max-w-60 rounded-xl drop-shadow-md"
           />
@@ -55,7 +55,7 @@ const MessageBookDetailPage: React.FC = () => {
           {photos.map((photo) => (
             <img
               key={photo}
-              src={getImageURL(photo)}
+              src={getPhotoURL(path, photo)}
               alt={title}
               className="rounded-md aspect-square object-cover col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-2"
             />

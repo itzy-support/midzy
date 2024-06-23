@@ -1,5 +1,5 @@
 import { MessageBook } from "@/types";
-import { getImageURL, getThumbnailURL } from "@/utils";
+import { getCoverURL, getPhotoURL } from "@/utils";
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
@@ -26,7 +26,7 @@ const MessageBookPage: React.FC = () => {
       {/* 히어로 */}
       <section
         className="h-full p-6 mb-4 flex bg-cover drop-shadow-lg relative"
-        style={{ backgroundImage: `url('${getImageURL(selected.photos[0])}')` }}
+        style={{ backgroundImage: `url('${getPhotoURL(selected.path, selected.photos[0])}')` }}
       >
         <div className="mt-auto flex flex-col gap-2 p-4 rounded-2xl text-white z-10">
           <h1 className="text-5xl font-bold">{selected.title}</h1>
@@ -51,7 +51,7 @@ const MessageBookPage: React.FC = () => {
           {messageBooks.map((messageBook: MessageBook) => (
             <img
               key={messageBook.id}
-              src={getThumbnailURL(messageBook.cover)}
+              src={getCoverURL(messageBook.path)}
               alt={messageBook.title}
               className={imageStyle(messageBook.id)}
               onClick={() => setSelected(messageBook)}
