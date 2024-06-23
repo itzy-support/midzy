@@ -4,7 +4,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 
 const MessageBookDetailPage: React.FC = () => {
   const messageBook: MessageBook = useLoaderData() as MessageBook;
-  const { id, title, description, contents, path, photos } = messageBook;
+  const { id, title, description, date, contents, path, photos } = messageBook;
 
   const navigate = useNavigate();
   const goViewer = (id: number): void => {
@@ -26,8 +26,9 @@ const MessageBookDetailPage: React.FC = () => {
         {/* 정보 */}
         <div className="col-span-3 sm:col-span-2 flex flex-col gap-4">
           <div>
+            <span className="text-xs opacity-55">{date}</span>
             <h2 className="text-4xl font-semibold">{title}</h2>
-            <p className="mt-1">{description}</p>
+            <p className="mt-1 opacity-75">{description}</p>
           </div>
 
           {contents && (
@@ -54,11 +55,10 @@ const MessageBookDetailPage: React.FC = () => {
 
         {/* 사진 */}
         <div className="grid grid-cols-12 gap-1.5 mt-2">
-          {photos.map((photo) => (
+          {[...Array(photos)].map((_, index) => (
             <img
-              key={photo}
-              src={getPhotoURL(path, photo)}
-              alt={title}
+              key={index}
+              src={getPhotoURL(path, index)}
               className="rounded-md aspect-square object-cover col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-2"
             />
           ))}

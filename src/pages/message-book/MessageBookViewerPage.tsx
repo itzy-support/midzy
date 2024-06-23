@@ -15,7 +15,12 @@ const MessageBookViewr: React.FC = () => {
   return (
     <main className="container mx-auto p-4 grid grid-cols-2 gap-1.5">
       {[...Array(pages)].map((_, index) => (
-        <img src={getMessageBookURL(path, index + 1)} className="col-span-2 xl:col-span-1" />
+        <img
+          key={index}
+          id={String(index)}
+          src={getMessageBookURL(path, index)}
+          className="col-span-2 xl:col-span-1 aspect-[640/903] object-cover rounded-lg drop-shadow-lg"
+        />
       ))}
     </main>
   );

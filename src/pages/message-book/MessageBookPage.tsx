@@ -26,11 +26,12 @@ const MessageBookPage: React.FC = () => {
       {/* 히어로 */}
       <section
         className="h-full p-6 mb-4 flex bg-cover drop-shadow-lg relative"
-        style={{ backgroundImage: `url('${getPhotoURL(selected.path, selected.photos[0])}')` }}
+        style={{ backgroundImage: `url('${getPhotoURL(selected.path, 0)}')` }}
       >
         <div className="mt-auto flex flex-col gap-2 p-4 rounded-2xl text-white z-10">
+          <span className="text-sm opacity-55">{selected.date}</span>
           <h1 className="text-5xl font-bold">{selected.title}</h1>
-          <p>{selected.description}</p>
+          <p className="opacity-75">{selected.description}</p>
 
           <a
             className="font-semibold mt-2 cursor-pointer hover:text-itzy-500 transition duration-300 ease-in-out"
