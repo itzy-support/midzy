@@ -8,7 +8,7 @@ const MessageBookPage: React.FC = () => {
   const [selected, setSelected] = useState<MessageBook>(messageBooks[0]);
 
   const imageStyle = (id: number): string => {
-    const base = "max-w-52 aspect-[148/210] object-cover snap-center rounded-lg drop-shadow-xl hover:cursor-pointer";
+    const base = "max-w-52 aspect-[179/264] object-cover snap-center rounded-lg drop-shadow-xl hover:cursor-pointer";
     if (selected.id === id) {
       return base + " transition -translate-y-3 scale-105";
     } else {

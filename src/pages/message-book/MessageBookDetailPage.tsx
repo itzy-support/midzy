@@ -19,7 +19,7 @@ const MessageBookDetailPage: React.FC = () => {
           <img
             src={getCoverURL(path)}
             alt={title}
-            className="aspect-[148/210] object-cover w-full max-w-60 rounded-xl drop-shadow-md"
+            className="aspect-[179/264] object-cover w-full max-w-60 rounded-xl drop-shadow-md"
           />
         </div>
 
@@ -31,19 +31,21 @@ const MessageBookDetailPage: React.FC = () => {
           </div>
 
           {contents && (
-            <div>
-              {contents.map(({ entry }, index) => (
-                <p key={entry} className="text-sm opacity-55">{`${index + 1}. ${entry}`}</p>
-              ))}
-            </div>
-          )}
+            <>
+              <div>
+                {contents.map(({ entry }, index) => (
+                  <p key={entry} className="text-sm opacity-55">{`${index + 1}. ${entry}`}</p>
+                ))}
+              </div>
 
-          <button
-            className="w-fit text-itzy-500 hover:text-itzy-200 transition duration-300 ease-in-out"
-            onClick={() => goViewer(id)}
-          >
-            읽어보기 📖
-          </button>
+              <button
+                className="w-fit text-itzy-500 hover:text-itzy-200 transition duration-300 ease-in-out"
+                onClick={() => goViewer(id)}
+              >
+                읽어보기 📖
+              </button>
+            </>
+          )}
         </div>
       </section>
 
