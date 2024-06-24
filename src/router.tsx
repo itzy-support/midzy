@@ -4,20 +4,19 @@ import messageBooks from "@/data/message-books.json";
 import MessageBookPage from "@/pages/message-book/MessageBookPage";
 import MessageBookDetailPage from "@/pages/message-book/MessageBookDetailPage";
 import MessageBookViewrPage from "@/pages/message-book/MessageBookViewerPage";
+import HomePage from "@/pages/HomePage";
 
 const messageBookData: MessageBook[] = messageBooks as MessageBook[];
 
 const routes: RouteObject[] = [
   {
-    path: "/",
-    element: <MessageBookPage />,
-    loader: (): MessageBook[] => messageBookData,
-  },
-  {
     path: "/message-book",
-    element: <MessageBookPage />,
-    loader: (): MessageBook[] => messageBookData,
     children: [
+      {
+        index: true,
+        element: <MessageBookPage />,
+        loader: (): MessageBook[] => messageBookData,
+      },
       {
         path: ":id",
         element: <MessageBookDetailPage />,
@@ -29,6 +28,10 @@ const routes: RouteObject[] = [
         loader: ({ params: { id } }) => getMessageBookById(Number(id)),
       },
     ],
+  },
+  {
+    path: "/",
+    element: <HomePage />,
   },
 ];
 
