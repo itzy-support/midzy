@@ -1,24 +1,57 @@
 import { MessageBook } from "@/types";
 import { getCoverURL, getPhotoURL } from "@/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 const MessageBookPage = () => {
   const messageBooks: MessageBook[] = useLoaderData() as MessageBook[];
   const [selected, setSelected] = useState<MessageBook>(messageBooks[0]);
 
-  const imageStyle = (id: number): string => {
-    const base = "max-w-52 aspect-[179/264] object-cover snap-center rounded-lg drop-shadow-xl hover:cursor-pointer";
-    if (selected.id === id) {
-      return base + " transition -translate-y-3 scale-105";
-    } else {
-      return base + " transition hover:-translate-y-2";
-    }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentIndex = messageBooks.findIndex((messageBook) => messageBook.id === selected.id);
+
+      let item;
+      if (messageBooks.length - 1 > currentIndex) {
+        item = messageBooks[currentIndex + 1];
+      } else {
+        item = messageBooks[0];
+      }
+
+      select(item);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [selected, messageBooks]);
+
+  const select = (messageBook: MessageBook): void => {
+    const carousel: HTMLElement = document.getElementById("carousel") as HTMLElement;
+    const carouselWidth = carousel.clientWidth;
+    const target: HTMLElement = document.getElementById(String(messageBook.id)) as HTMLElement;
+    const targetWidth = target.clientWidth;
+    const targetLeft = target.offsetLeft;
+
+    const scrollPosition = targetLeft - carouselWidth / 2 + targetWidth / 2;
+    carousel.scroll({
+      left: scrollPosition,
+      behavior: "smooth",
+    });
+
+    setSelected(messageBook);
   };
 
   const navigate = useNavigate();
   const goDetail = (messageBook: MessageBook): void => {
     navigate(`/message-book/${messageBook.id}`);
+  };
+
+  const imageStyle = (id: number): string => {
+    const base = "max-w-52 aspect-[179/264] object-cover rounded-lg drop-shadow-xl hover:cursor-pointer";
+    if (selected.id === id) {
+      return base + " transition -translate-y-3 scale-105";
+    } else {
+      return base + " transition hover:-translate-y-2";
+    }
   };
 
   return (
@@ -48,14 +81,15 @@ const MessageBookPage = () => {
       <div className="w-full mt-auto pt-2">
         <span className="px-7 text-xl font-semibold">메시지북</span>
 
-        <div className="flex gap-4 p-6 overflow-x-scroll snap-x scrollbar-hide">
+        <div id="carousel" className="flex gap-4 p-6 overflow-x-scroll scrollbar-hide">
           {messageBooks.map((messageBook: MessageBook) => (
             <img
               key={messageBook.id}
+              id={String(messageBook.id)}
               src={getCoverURL(messageBook.path)}
               alt={messageBook.title}
               className={imageStyle(messageBook.id)}
-              onClick={() => setSelected(messageBook)}
+              onClick={() => select(messageBook)}
             />
           ))}
         </div>
