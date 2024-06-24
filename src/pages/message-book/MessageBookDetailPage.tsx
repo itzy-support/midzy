@@ -45,7 +45,7 @@ const MessageBookDetailPage = () => {
                 ))}
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex gap-4 mt-auto">
                 <button
                   className="w-fit py-1 px-2.5 bg-itzy-500 text-white hover:text-itzy-200 rounded-full transition duration-300 ease-in-out"
                   onClick={() => goViewer(id)}
@@ -70,7 +70,7 @@ const MessageBookDetailPage = () => {
       </section>
 
       <section className="bg-white p-6 rounded-xl shadow-lg">
-        <span className="text-xl font-semibold">📷실물사진</span>
+        <span className="text-xl font-semibold">📷 실물사진</span>
 
         {/* 사진 */}
         <div className="grid grid-cols-12 gap-1.5 mt-2">
