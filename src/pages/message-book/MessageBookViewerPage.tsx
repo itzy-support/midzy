@@ -1,4 +1,4 @@
-import { MessageBook } from "@/types";
+import { Contents, MessageBook } from "@/types";
 import { getMessageBookURL } from "@/utils";
 import { faListUl } from "@fortawesome/free-solid-svg-icons/faListUl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,21 +7,29 @@ import { useLoaderData } from "react-router-dom";
 
 const MessageBookViewr = () => {
   const messageBook: MessageBook = useLoaderData() as MessageBook;
-  const { pages, path, contents } = messageBook;
+  const { title, pages, path, contents } = messageBook;
+
+  const titleContent: Contents = {
+    entry: title,
+    page: 0,
+    index: 0,
+    hidden: false,
+  };
 
   const moveIndex = (index: number): void => {
     location.href = `#${index}`;
   };
 
-  const contentsNumbers = document.querySelectorAll(".contents-li").length;
-  const height = `h-[${40 * contentsNumbers}px]`;
+  const [contentHeight, setContentHeight] = useState(0);
 
-  const [displayIndex, setDisplayIndex] = useState<string>("h-0");
-  const toggleDisplayIndex = () => {
-    if (displayIndex === "h-0") {
-      setDisplayIndex(height);
+  const toggleContent = () => {
+    const contentsNumbers = document.querySelectorAll(".contents-li").length;
+    const height = 40 * contentsNumbers;
+
+    if (contentHeight === 0) {
+      setContentHeight(height);
     } else {
-      setDisplayIndex("h-0");
+      setContentHeight(0);
     }
   };
 
@@ -39,12 +47,10 @@ const MessageBookViewr = () => {
       {contents && (
         <div className="fixed bottom-4 right-5 h-screen flex flex-col gap-2 justify-end items-end">
           <ul
-            className={
-              "bg-white rounded-md drop-shadow-md overflow-hidden transition-[height] duration-300 ease-in-out " +
-              displayIndex
-            }
+            className="bg-white rounded-md drop-shadow-md overflow-hidden transition-[height] duration-300 ease-in-out"
+            style={{ height: `${contentHeight}px` }}
           >
-            {contents.map(
+            {[titleContent, ...contents].map(
               (content) =>
                 !content.hidden && (
                   <li
@@ -60,7 +66,7 @@ const MessageBookViewr = () => {
 
           <button
             className="w-fit aspect-square p-3 bg-white rounded-full drop-shadow-md hover:text-itzy-500 transition duration-300 ease-in-out"
-            onClick={toggleDisplayIndex}
+            onClick={toggleContent}
           >
             <FontAwesomeIcon icon={faListUl} size="lg" />
           </button>
