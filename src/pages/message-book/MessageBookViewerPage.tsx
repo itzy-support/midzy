@@ -2,7 +2,7 @@ import { MessageBook } from "@/types";
 import { getMessageBookURL } from "@/utils";
 import { useLoaderData } from "react-router-dom";
 
-const MessageBookViewr: React.FC = () => {
+const MessageBookViewr = () => {
   const messageBook: MessageBook = useLoaderData() as MessageBook;
   const { pages, path } = messageBook;
 

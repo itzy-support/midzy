@@ -3,7 +3,7 @@ import { getCoverURL, getPhotoURL } from "@/utils";
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
-const MessageBookPage: React.FC = () => {
+const MessageBookPage = () => {
   const messageBooks: MessageBook[] = useLoaderData() as MessageBook[];
   const [selected, setSelected] = useState<MessageBook>(messageBooks[0]);
 

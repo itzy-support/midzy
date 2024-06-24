@@ -2,7 +2,7 @@ import { MessageBook } from "@/types";
 import { getCoverURL, getPhotoURL } from "@/utils";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
-const MessageBookDetailPage: React.FC = () => {
+const MessageBookDetailPage = () => {
   const messageBook: MessageBook = useLoaderData() as MessageBook;
   const { id, title, description, date, contents, path, photos } = messageBook;
 
