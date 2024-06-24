@@ -1,8 +1,8 @@
 export interface Contents {
   entry: string;
   page: number;
-  index: number;
-  hidden: boolean;
+  index: number | undefined;
+  hidden: boolean | undefined;
 }
 
 export interface MessageBook {
@@ -12,7 +12,7 @@ export interface MessageBook {
   date: string;
   path: string;
   photos: number;
-  pages: number;
-  pdf: string;
-  contents: Contents[];
+  pages: number | undefined;
+  pdf: string | undefined;
+  contents: Contents[] | undefined;
 }
