@@ -1,0 +1,12 @@
+@keyframes fill {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.fill-animation {
+  animation: fill 5000ms linear forwards;
+}

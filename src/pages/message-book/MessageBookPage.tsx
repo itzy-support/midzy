@@ -38,6 +38,11 @@ const MessageBookPage = () => {
     });
 
     setSelected(messageBook);
+
+    // 애니메이션 초기화
+    const progressBar: HTMLElement = document.getElementById("progress-bar") as HTMLElement;
+    progressBar.classList.remove("fill-animation"), void progressBar.offsetWidth;
+    progressBar.classList.add("fill-animation");
   };
 
   const navigate = useNavigate();
@@ -74,6 +79,11 @@ const MessageBookPage = () => {
           </a>
         </div>
 
+        {/* 프로그레스바 */}
+        <div className="absolute w-full h-0.5 bottom-0 left-0 bg-slate-50 z-10"></div>
+        <div id="progress-bar" className="absolute w-0 h-0.5 bottom-0 left-0 bg-itzy-500 z-20 fill-animation"></div>
+
+        {/* 백그라운드 오버레이 */}
         <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-t from-black/10"></div>
       </section>
 
