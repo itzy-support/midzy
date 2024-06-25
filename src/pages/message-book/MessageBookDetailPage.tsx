@@ -2,6 +2,7 @@ import { MessageBook } from "@/types";
 import { getCoverURL, getDriveURL, getPhotoURL } from "@/utils";
 import { faBook, faComment, faFilePdf, faLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { TwitterShareButton, XIcon } from "react-share";
 
@@ -17,6 +18,8 @@ const MessageBookDetailPage = () => {
   const openPdfWindow = (pdfId: string): void => {
     open(getDriveURL(pdfId));
   };
+
+  const [viewImageIndex, setViewImageIndex] = useState<number>(0);
 
   return (
     <main className="container mx-auto p-4 flex flex-col gap-4">
@@ -96,11 +99,16 @@ const MessageBookDetailPage = () => {
             <img
               key={index}
               src={getPhotoURL(path, index)}
-              className="rounded-md aspect-square object-cover col-span-4 md:col-span-3 xl:col-span-2"
+              className="rounded-md aspect-square object-cover col-span-4 md:col-span-3 xl:col-span-2 cursor-pointer transition hover:scale-[1.03]"
+              onClick={() => setViewImageIndex(index)}
             />
           ))}
         </div>
       </section>
+
+      <div>
+        <img src={getPhotoURL(path, viewImageIndex)} className="rounded-md" />
+      </div>
     </main>
   );
 };
