@@ -1,8 +1,9 @@
 import { MessageBook } from "@/types";
 import { getCoverURL, getDriveURL, getPhotoURL } from "@/utils";
-import { faBook, faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faComment, faFilePdf, faLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { TwitterShareButton, XIcon } from "react-share";
 
 const MessageBookDetailPage = () => {
   const messageBook: MessageBook = useLoaderData() as MessageBook;
@@ -21,12 +22,29 @@ const MessageBookDetailPage = () => {
     <main className="container mx-auto p-4 flex flex-col gap-4">
       <section className="grid grid-cols-3 gap-8 bg-white p-6 rounded-xl shadow-lg">
         {/* 이미지 */}
-        <div className="col-span-3 lg:col-span-1 flex justify-center">
+        <div className="col-span-3 lg:col-span-1 flex flex-col gap-3 justify-center items-center">
           <img
             src={getCoverURL(path)}
             alt={title}
             className="aspect-[179/264] object-cover w-full max-w-60 rounded-xl drop-shadow-md"
           />
+
+          <div className="flex gap-3">
+            {/* 카카오로 대체 */}
+            <button className="bg-yellow-300 rounded-full w-6 h-6 flex justify-center items-center">
+              <FontAwesomeIcon icon={faComment} size="sm" />
+            </button>
+
+            {/* X */}
+            <TwitterShareButton url={location.href}>
+              <XIcon size={24} round={true}></XIcon>
+            </TwitterShareButton>
+
+            {/* 링크 */}
+            <button className="bg-gray-200 rounded-full w-6 h-6 flex justify-center items-center">
+              <FontAwesomeIcon icon={faLink} size="sm" />
+            </button>
+          </div>
         </div>
 
         {/* 정보 */}
