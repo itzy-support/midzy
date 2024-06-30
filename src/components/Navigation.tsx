@@ -6,9 +6,9 @@ const Navigation = () => {
 
   return (
     <header className="fixed w-full h-12 z-[9999] px-6 flex items-center">
-      <div>
-        <img src={logo} alt="logo" className="h-8 cursor-pointer" />
-      </div>
+      <button onClick={() => navigate("/")}>
+        <img src={logo} alt="logo" className="h-8" />
+      </button>
 
       <div className="flex gap-4 relative ml-5">
         <button className="w-20 text-white text-center" onClick={() => navigate("/")}>
