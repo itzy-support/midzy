@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 const MessageBookPage = () => {
+  const navigate = useNavigate();
+
   const messageBooks: MessageBook[] = useLoaderData() as MessageBook[];
   const [selected, setSelected] = useState<MessageBook>(messageBooks[0]);
 
@@ -49,20 +51,6 @@ const MessageBookPage = () => {
     progressBar.classList.add("fill-animation");
   };
 
-  const navigate = useNavigate();
-  const goDetail = (messageBook: MessageBook): void => {
-    navigate(`/message-book/${messageBook.id}`);
-  };
-
-  const imageStyle = (id: number): string => {
-    const base = "max-w-52 aspect-[179/264] object-cover rounded-lg drop-shadow-xl hover:cursor-pointer";
-    if (selected.id === id) {
-      return base + " transition -translate-y-3 scale-105";
-    } else {
-      return base + " transition hover:-translate-y-2";
-    }
-  };
-
   return (
     <main className="w-screen h-screen flex flex-col">
       {/* 히어로 */}
@@ -77,7 +65,7 @@ const MessageBookPage = () => {
 
           <a
             className="font-semibold mt-2 cursor-pointer hover:text-itzy-500 transition duration-300 ease-in-out"
-            onClick={() => goDetail(selected)}
+            onClick={() => navigate(`/message-book/${selected.id}`)}
           >
             상세정보✨
           </a>
@@ -102,7 +90,9 @@ const MessageBookPage = () => {
               id={String(messageBook.id)}
               src={getCoverURL(messageBook.path)}
               alt={messageBook.title}
-              className={imageStyle(messageBook.id)}
+              className={`max-w-52 aspect-[179/264] object-cover rounded-lg drop-shadow-xl hover:cursor-pointer transition ${
+                selected.id === messageBook.id ? "-translate-y-3 scale-105" : "hover:-translate-y-2"
+              }`}
               onClick={() => select(messageBook)}
             />
           ))}
