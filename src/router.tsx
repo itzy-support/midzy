@@ -5,33 +5,36 @@ import MessageBookPage from "@/pages/message-book/MessageBookPage";
 import MessageBookDetailPage from "@/pages/message-book/MessageBookDetailPage";
 import MessageBookViewrPage from "@/pages/message-book/MessageBookViewerPage";
 import HomePage from "@/pages/HomePage";
+import Layout from "@/components/Layout";
 
 const messageBookData: MessageBook[] = messageBooks as MessageBook[];
 
 const routes: RouteObject[] = [
   {
-    path: "/message-book",
+    element: <Layout />,
     children: [
+      { path: "/", element: <HomePage /> },
       {
-        index: true,
-        element: <MessageBookPage />,
-        loader: (): MessageBook[] => messageBookData,
-      },
-      {
-        path: ":id",
-        element: <MessageBookDetailPage />,
-        loader: ({ params: { id } }) => getMessageBookById(Number(id)),
-      },
-      {
-        path: "viewer/:id",
-        element: <MessageBookViewrPage />,
-        loader: ({ params: { id } }) => getMessageBookById(Number(id)),
+        path: "/message-book",
+        children: [
+          {
+            index: true,
+            element: <MessageBookPage />,
+            loader: (): MessageBook[] => messageBookData,
+          },
+          {
+            path: ":id",
+            element: <MessageBookDetailPage />,
+            loader: ({ params: { id } }) => getMessageBookById(Number(id)),
+          },
+          {
+            path: "viewer/:id",
+            element: <MessageBookViewrPage />,
+            loader: ({ params: { id } }) => getMessageBookById(Number(id)),
+          },
+        ],
       },
     ],
-  },
-  {
-    path: "/",
-    element: <HomePage />,
   },
 ];
 
