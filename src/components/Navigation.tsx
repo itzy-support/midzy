@@ -5,7 +5,7 @@ const Navigation = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="fixed w-full h-12 z-[9999] px-6 flex items-center">
+    <header className="fixed top-0 w-full h-12 z-[9999] px-6 flex items-center">
       <button onClick={() => navigate("/")}>
         <img src={logo} alt="logo" className="h-8" />
       </button>
