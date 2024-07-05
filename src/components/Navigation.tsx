@@ -41,13 +41,17 @@ const Navigation = () => {
 
   return (
     <header className="fixed top-0 w-full h-14 z-[9999] px-6 flex justify-between items-center">
-      <NavButton path="/">SUPPORT</NavButton>
+      <div className="w-28 flex justify-start">
+        <NavButton path="/">SUPPORT</NavButton>
+      </div>
 
       <button onClick={() => navigate("/")}>
         <img src={logo} alt="logo" className="h-8" />
       </button>
 
-      <NavButton path="/message-book">MESSAGE BOOK</NavButton>
+      <div className="w-28 flex justify-end">
+        <NavButton path="/message-book">MESSAGE BOOK</NavButton>
+      </div>
     </header>
   );
 };
