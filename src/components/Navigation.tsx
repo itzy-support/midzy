@@ -1,28 +1,53 @@
 import logo from "@/assets/logo.webp";
-import { useNavigate } from "react-router-dom";
+import { ReactNode, FC } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
+interface ButtonProps {
+  children: ReactNode;
+  path: string;
+}
+
+const NavButton: FC<ButtonProps> = ({ children, path }) => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  return (
+    <button
+      className="relative text-sm text-white hover:text-itzy-500 transition duration-300 ease-in-out text-center"
+      onClick={() => navigate(path)}
+    >
+      {children}
+      <Pointer show={path === pathname} />
+    </button>
+  );
+};
+
+interface PointerProps {
+  show: boolean;
+}
+
+const Pointer: FC<PointerProps> = ({ show }) => (
+  <div className="absolute -bottom-1 w-full flex justify-center">
+    <div
+      className={`h-1 bg-itzy-500 rounded-full transition-all duration-300 ease-out ${
+        show ? "visible w-4" : "invisible w-0"
+      }`}
+    />
+  </div>
+);
 
 const Navigation = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="fixed top-0 w-full h-12 z-[9999] px-6 flex items-center">
+    <header className="fixed top-0 w-full h-14 z-[9999] px-6 flex justify-between items-center">
+      <NavButton path="/">SUPPORT</NavButton>
+
       <button onClick={() => navigate("/")}>
         <img src={logo} alt="logo" className="h-8" />
       </button>
 
-      <div className="flex gap-4 relative ml-5">
-        <button className="w-20 text-white text-center" onClick={() => navigate("/")}>
-          NEW
-        </button>
-        <button className="w-20 text-white text-center" onClick={() => navigate("/message-book")}>
-          메시지북
-        </button>
-        <button className="w-20 text-white text-center" onClick={() => navigate("/")}>
-          서포트
-        </button>
-
-        <div className="absolute -bottom-1 mx-8 w-4 h-1 bg-itzy-500 rounded-full" />
-      </div>
+      <NavButton path="/message-book">MESSAGE BOOK</NavButton>
     </header>
   );
 };
