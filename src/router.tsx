@@ -13,7 +13,7 @@ const routes: RouteObject[] = [
   {
     element: <Layout />,
     children: [
-      { path: "/", element: <HomePage /> },
+      { path: "/", element: <HomePage />, loader: (): MessageBook[] => messageBookData },
       {
         path: "/message-book",
         children: [

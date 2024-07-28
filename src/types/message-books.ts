@@ -13,6 +13,8 @@ export interface MessageBook {
   path: string;
   photos: number;
   pages: number | undefined;
+  textColor: string;
+  bgColor: string;
   pdf: string | undefined;
   contents: Contents[] | undefined;
 }
