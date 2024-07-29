@@ -4,7 +4,7 @@ import messageBooks from "@/data/message-books.json";
 import MessageBookPage from "@/pages/message-book/MessageBookPage";
 import MessageBookDetailPage from "@/pages/message-book/MessageBookDetailPage";
 import MessageBookViewrPage from "@/pages/message-book/MessageBookViewerPage";
-import HomePage from "@/pages/HomePage";
+import HomePage from "@/pages/home/HomePage";
 import Layout from "@/components/Layout";
 
 const messageBookData: MessageBook[] = messageBooks as MessageBook[];

@@ -1,3 +1,5 @@
+import SupportItem from "@/pages/home/components/SupportItem";
+import SupportItemFooter from "@/pages/home/components/SupportItemFooter";
 import { MessageBook } from "@/types";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
@@ -17,29 +19,33 @@ const HomePage = () => {
       if (newPage > maxPage) newPage = 0;
 
       setPage(newPage);
-      setScrollCounter(0);
     };
 
     const handleWheel = ({ deltaY }: WheelEvent) => {
       if (deltaY > 0) {
-        setScrollCounter(scrollCounter + 10);
-        if (scrollCounter === 100) movePage(1);
+        setScrollCounter(scrollCounter + 1);
+        if (scrollCounter === 6) {
+          movePage(1);
+          setScrollCounter(0);
+        }
       } else {
-        setScrollCounter(scrollCounter - 10);
-        if (scrollCounter === -100) movePage(-1);
+        setScrollCounter(scrollCounter - 1);
+        if (scrollCounter === -6) {
+          movePage(-1);
+          setScrollCounter(0);
+        }
       }
     };
 
     const timer = setTimeout(() => {
-      if (scrollCounter === 0 || scrollCounter === 100) return;
+      if (scrollCounter === 0) return;
 
-      if (scrollCounter > 30) {
+      if (scrollCounter > 3) {
         movePage(1);
-      } else if (scrollCounter < -30) {
+      } else if (scrollCounter < -3) {
         movePage(-1);
-      } else {
-        setScrollCounter(0);
       }
+      setScrollCounter(0);
     }, 400);
 
     window.addEventListener("wheel", handleWheel);
@@ -60,11 +66,11 @@ const HomePage = () => {
     return page - 1;
   };
 
-  const height = (index: number) => {
-    if (index === page && scrollCounter > 0) return `${100 - scrollCounter}%`;
-    if (index === prevPage() && scrollCounter < 0) return `${0 - scrollCounter}%`;
-    if (index >= page && index !== prevPage()) return "100%";
-    return "0%";
+  const clip = (index: number) => {
+    if (index === page && scrollCounter > 0) return scrollCounter;
+    if (index === prevPage() && scrollCounter < 0) return 6 + scrollCounter;
+    if (index !== prevPage()) return 0;
+    return 6;
   };
 
   const visible = (index: number) => {
@@ -79,7 +85,7 @@ const HomePage = () => {
     return "invisible";
   };
 
-  const zIndex = (index: number) => {
+  const pagePosition = (index: number) => {
     if (index === prevPage()) return "z-10";
     if (index === nextPage()) return "-z-10";
     return "z-0";
@@ -93,26 +99,17 @@ const HomePage = () => {
 
   return (
     <main className="h-screen overflow-hidden scrollbar-hide relative">
-      {messageBooks.map(({ id, textColor, bgColor }, index) => (
-        <div
+      {messageBooks.map(({ id, date, textColor, bgColor }, index) => (
+        <SupportItem
           key={id}
-          className={`w-screen absolute flex transition-all duration-300 ease-in-out ${visible(index)} ${zIndex(
-            index
-          )}`}
-          style={{ height: height(index), backgroundColor: bgColor, color: textColor }}
+          visible={visible(index)}
+          clip={clip(index)}
+          textColor={textColor}
+          bgColor={bgColor}
+          zIndex={pagePosition(index)}
         >
-          <div
-            className={`${visibleFooter(
-              index
-            )} fixed bottom-0 w-full flex justify-between py-4 px-6 text-sm font-semibold`}
-          >
-            <span>2024.07.08</span>
-
-            <span>
-              {index + 1}/{maxPage + 1}
-            </span>
-          </div>
-        </div>
+          <SupportItemFooter visible={visibleFooter(index)} page={index + 1} maxPage={maxPage + 1} date={date} />
+        </SupportItem>
       ))}
     </main>
   );
